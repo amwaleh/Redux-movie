@@ -1,10 +1,10 @@
 import React from 'react'
-import MovieCard from './card'
+import MovieCard ,{ MovieSingleViewCard }from './card'
 import { Card } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
 
-const SearchInput = ({ setSearchTerm, search, fetchAll }) => {
+const SearchInput = ({ setSearchTerm, search, fetchAll}) => {
 
 const action = {
         color: 'teal',
@@ -18,18 +18,31 @@ const action = {
   return (<Input fluid action={action} defaultValue='search' onChange={(e) => setSearchTerm(e.target.value)} />)
 }
 
-const mappedlist= (lis) => lis.map((data)=> (<MovieCard data={data} id={data.imdbID}  key={data.imdbID} />))
+const mappedlist= (lis, fetchOne) =>(
+    <Card.Group itemsPerRow={4}>
+    {lis.map((data)=> (<MovieCard data={data} key={data.imdbID} onClick={fetchOne}/>))}
+    </Card.Group>
+    )
+
+// const singleView = (data) =>
 
 const Container = (props) => {
     console.log('container', props)
-const { data } = props
+const { data, multiView } = props
+const showMultiView = data && !data.Error && multiView
+console.log('showMultiView',showMultiView, data)
     return (
         <div>
         <Segment  padded='very'>
         <SearchInput {...props} /></Segment>
         <Segment padded='very'>
             <Card.Group itemsPerRow={4}>
-              {data.Search && mappedlist(data.Search)}
+              {showMultiView ?
+              mappedlist(data.Search, props.fetchOne)
+              : (data && <MovieSingleViewCard data={data} />)
+              }
+              {data && data.Error}
+
             </Card.Group>
         </Segment>
         </div>

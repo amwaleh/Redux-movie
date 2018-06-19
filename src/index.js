@@ -11,17 +11,17 @@ import {
     applyMiddleware
 } from 'redux';
 import thunk from 'redux-thunk'
-import {fetchAll} from './actions/movieActions'
+import api from './middleware/api'
 import { movieReducers } from './reducers/movieReducer';
 
 const reducers = combineReducers(movieReducers)
-const middleware = applyMiddleware(thunk)
+const middleware = applyMiddleware(thunk, api)
 const store = createStore(
     movieReducers,
     // {data: []},
     window.devToolsExtension && window.devToolsExtension(),
     middleware)
-store.dispatch(fetchAll())
+// store.dispatch(fetchAll())
 
 
 ReactDOM.render(
