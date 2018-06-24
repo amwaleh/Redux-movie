@@ -13,6 +13,7 @@ const api = ({dispatch, getState}) => next => action => {
             dispatch(success(res))
         })
         .catch((error) => {
+            //TODO: fix this 
             console.log('err', error)
             dispatch({
                 type: 'FETCH_ALL',

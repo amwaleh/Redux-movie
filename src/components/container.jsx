@@ -1,5 +1,5 @@
 import React from 'react'
-import MovieCard ,{ MovieSingleViewCard }from './card'
+import MovieListPage ,{ MoviePageCard }from './card'
 import { Card } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
@@ -20,7 +20,7 @@ const action = {
 
 const mappedlist= (lis, fetchOne) =>(
     <Card.Group itemsPerRow={4}>
-    {lis.map((data)=> (<MovieCard data={data} key={data.imdbID} onClick={fetchOne}/>))}
+    {lis.map((data)=> (<MovieListPage data={data} key={data.imdbID} onClick={fetchOne}/>))}
     </Card.Group>
     )
 
@@ -39,7 +39,7 @@ console.log('showMultiView',showMultiView, data)
             <Card.Group itemsPerRow={4}>
               {showMultiView ?
               mappedlist(data.Search, props.fetchOne)
-              : (data && <MovieSingleViewCard data={data} />)
+              : (data && <MoviePageCard data={data} />)
               }
               {data && data.Error}
 

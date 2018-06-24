@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Card, Icon, Image } from 'semantic-ui-react'
 
-const MovieCard = ({data, onClick}) => (
+const MovieListPage = ({data, onClick}) => (
 
   <Card onClick={()=>onClick(data.imdbID)}>
-    {data.Poster != 'N/A' ? <Image src={data.Poster} /> :<Icon name='images outline' size='massive' />}
+    {data.Poster !== 'N/A' ? <Image src={data.Poster} /> :<Icon name='images outline' size='massive' />}
     <Card.Content>
       <Card.Header>{data.Title}</Card.Header>
       <Card.Meta>
@@ -21,11 +21,11 @@ const MovieCard = ({data, onClick}) => (
   </Card>
 )
 
-export const MovieSingleViewCard = ({data}) => (
+export const MoviePageCard = ({data}) => (
 
 // imdbID
   <Card centered >
-     {data.Poster != 'N/A' ? <Image src={data.Poster} /> : <Icon name='images outline' size='massive' />}
+     {data.Poster !== 'N/A' ? <Image src={data.Poster} /> : <Icon name='images outline' size='massive' />}
     <Card.Content>
       <Card.Header>{data.Title}</Card.Header>
       <Card.Meta>
@@ -41,4 +41,4 @@ export const MovieSingleViewCard = ({data}) => (
   </Card>
 )
 
-export default MovieCard
+export default MovieListPage

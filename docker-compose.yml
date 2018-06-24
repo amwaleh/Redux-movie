@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  app:
+    environment:
+     - PORT:8000
+    build: .
+    command: npm start
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/redux-movie
+      - node-deps:/redux-movie/node_modules
+
+volumes:
+  node-deps:
