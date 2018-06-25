@@ -7,14 +7,13 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import {
     createStore,
-    combineReducers,
     applyMiddleware
 } from 'redux';
 import thunk from 'redux-thunk'
 import api from './middleware/api'
 import { movieReducers } from './reducers/movieReducer';
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const reducers = combineReducers(movieReducers)
 const middleware = applyMiddleware(thunk, api)
 const store = createStore(
     movieReducers,
@@ -26,6 +25,8 @@ const store = createStore(
 
 ReactDOM.render(
 <Provider store={store}>
+<Router basename={process.env.PUBLIC_URL}>
 <App/>
+</Router>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();
