@@ -17,16 +17,14 @@ import { BrowserRouter as Router } from 'react-router-dom'
 const middleware = applyMiddleware(thunk, api)
 const store = createStore(
     movieReducers,
-    // {data: []},
     window.devToolsExtension && window.devToolsExtension(),
     middleware)
-// store.dispatch(fetchAll())
 
 
 ReactDOM.render(
-<Provider store={store}>
-<Router basename={process.env.PUBLIC_URL}>
-<App/>
-</Router>
-</Provider>, document.getElementById('root'));
+    <Provider store={store}>
+        <Router basename={process.env.PUBLIC_URL}>
+            <App />
+        </Router>
+    </Provider>, document.getElementById('root'));
 registerServiceWorker();

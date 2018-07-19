@@ -1,18 +1,17 @@
-
-export const fetchAll = (search=null, page=1, ) => {
+export const fetchAll = (search = null, page = 1, ) => {
     const config = {
-            params: {
-                s: search,
-                page: 1,
-                apikey: '38f17281'
-            }
+        params: {
+            s: search,
+            page: 1,
+            apikey: '38f17281'
+        }
     }
 
     return {
         type: 'API',
-        payload : {
+        payload: {
             success: setListPage,
-            url:'http://www.omdbapi.com/',
+            url: 'http://www.omdbapi.com/',
             config
         }
 
@@ -39,7 +38,7 @@ export const fetchOne = (imdb = null) => {
 
 }
 
-const setListPage = (payload) =>{
+const setListPage = (payload) => {
     return {
         type: 'FETCH_ALL',
         payload: {
@@ -50,7 +49,7 @@ const setListPage = (payload) =>{
 
 }
 
-const setMoviePage =(payload) => {
+const setMoviePage = (payload) => {
     return {
         type: 'FETCH_ONE',
         payload: {
@@ -63,10 +62,8 @@ const setMoviePage =(payload) => {
 
 
 export const setSearchTerm = (term) => ({
-        type: 'SEARCH_TERM',
-        payload:{
-            search:term
-        }
+    type: 'SEARCH_TERM',
+    payload: {
+        search: term
     }
-)
-
+})

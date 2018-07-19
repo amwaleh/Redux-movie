@@ -102,5 +102,13 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "guppy": {
+    "id": "redux-movie",
+    "name": "redux-movie",
+    "type": "create-react-app",
+    "color": "#FF6D00",
+    "icon": null,
+    "createdAt": 1531998189991
   }
 }

@@ -3,16 +3,17 @@ import './App.css';
 import Container from './components/container'
 import { connect } from 'react-redux'
 import { Menu } from 'semantic-ui-react'
-import {fetchAll, setSearchTerm, fetchOne} from './actions/movieActions'
+import { fetchAll, setSearchTerm, fetchOne } from './actions/movieActions'
+import { bindActionsCreater } from 'redux'
 
 // export default InputExampleActionLabeledButton
 class App extends Component {
   render() {
     return (
       <div>
-      <Menu  size={'large'} text={'movie'}/>
-       <Container { ...this.props } />
-     </div>
+        <Menu size={'large'} text={'movie'} />
+        <Container {...this.props} />
+      </div>
     );
   }
 }

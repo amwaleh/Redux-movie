@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 
-const api = ({dispatch, getState}) => next => action => {
+const api = ({ dispatch, getState }) => next => action => {
 
     if (action.type !== 'API') {
         return next(action)
     }
-    const {url, config, success} = action.payload
+    const { url, config, success } = action.payload
     axios.get(url, config)
         .then((res) => {
             dispatch(success(res))
